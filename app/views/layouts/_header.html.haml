@@ -4,9 +4,9 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    %a.navbar-brand{:href => "#"} Ujrails
+    %a.navbar-brand{:href => "#"} LIpsum co.
     .navbar-collapse.collapse.navbar-responsive-collapse
       %ul.nav.navbar-nav
         %li= link_to "Link1", "/path1"
         %li= link_to "Link2", "/path2"
-        %li= link_to "Link3", "/path3"
+        %li= link_to "Logout", destroy_user_session_path, method: :delete
