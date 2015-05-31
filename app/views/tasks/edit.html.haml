@@ -1,0 +1,34 @@
+%h1 Editing task
+= form_for :task, url: project_task_path, method: :patch do |f|
+  - if @task.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@task.errors.count, 'error')
+        prohibited
+        this project from being saved:
+      %ul
+        - @task.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = f.label :title
+    %br
+      = f.text_field :title
+  %p
+    = f.label :description
+    %br
+      = f.text_area :description
+  %p
+    = f.label :priority
+    %br
+      = f.text_field :priority
+  %p
+    = f.label :difficulty
+    %br
+      = f.text_field :difficulty
+  %p
+    = f.label :status
+    %br
+      = f.text_field :status
+  %p
+    = f.submit
+= link_to 'Back', project_tasks_path

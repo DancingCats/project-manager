@@ -15,3 +15,12 @@
   %p
     %strong Status:
     = task.status
+  %p= link_to 'Edit', edit_project_task_path(task.project, task)
+  -#%p= link_to 'Edit', controller: 'tasks',
+  -#  action: 'edit',
+  -#  project_id: @project,
+  -#  id: task
+  -#%p= link_to 'Destroy', controller: 'tasks', action: 'destroy', project_id: @project, id: task
+  %p= link_to 'Destroy', [task.project, task], |
+    method: :delete,                   |
+    data: { confirm: 'Are you sure?' } |
