@@ -5,3 +5,5 @@
 //= require cyborg/loader
 //= require cyborg/bootswatch
 //= require cookies_eu
+//= require bootstrap-sprockets
+//= require turbolinks

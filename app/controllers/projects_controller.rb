@@ -1,10 +1,13 @@
 class ProjectsController < ApplicationController
+
   def new
     @project = Project.new
+    authorize! :manage, @project
   end
 
   def show
     @project = Project.find(params[:id])
+    authorize! :manage, @project
   end
 
   def index
@@ -13,6 +16,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    authorize! :manage, @project
 
     if @project.save
       redirect_to @project
@@ -24,10 +28,12 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    authorize! :manage, @project
   end
 
   def update
     @project = Project.find(params[:id])
+    authorize! :manage, @project
 
     if @project.update(project_params)
       redirect_to @project
@@ -38,6 +44,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
+    authorize! :manage, @project
     @project.destroy
 
     redirect_to projects_path

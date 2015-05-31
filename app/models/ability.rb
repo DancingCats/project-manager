@@ -5,7 +5,8 @@ class Ability
     if user
       can :manage, :all
     else
-      cannot :read, :all
+      cannot :read, @project
+      cannot :read, @task
     end
     # Define abilities for the passed in user here. For example:
     #

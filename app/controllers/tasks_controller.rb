@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  load_and_authorize_resource
+
   def create
     @project = Project.find(params[:project_id])
     @task = @project.tasks.create(task_params)
