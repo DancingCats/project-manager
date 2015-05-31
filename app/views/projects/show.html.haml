@@ -27,7 +27,24 @@
   %p
     = f.label :status
     %br
-      = f.text_field :status
+    = f.radio_button :status, 'Open'
+    = f.radio_button :status, 'Close'
+  -#%p
+  -#  = f.label :status
+  -#  %select{:name => 'status'}
+  -#    %option
+  -#    %option yahoo
+  -#    %option gmail
+  -#    %option msn
+  -#%p
+  -#  = f.label :status
+  -#  %br
+  -#    = f.select 'task', 'status', %w[Open Close Cancelled]
+      -#= f.collection_select :status, options_for_select(%w[Open Close Cancelled])
+  -#%p
+  -#  = f.label :status
+  -#  %br
+  -#    = f.text_field :status
   %p
     = f.submit
 = link_to 'Back', projects_path
