@@ -23,4 +23,34 @@
   -#%p= link_to 'Destroy', controller: 'tasks', action: 'destroy', project_id: @project, id: task
   %p= link_to 'Destroy', [task.project, task], |
     method: :delete,                   |
-    data: { confirm: 'Are you sure?' } |
+    data: { confirm: 'Are you sure?' }
+
+%h2 Add a task:
+= form_for([@project, @project.tasks.build]) do |f|
+  %p
+    = f.label :title
+    %br
+      = f.text_field :title
+  %p
+    = f.label :description
+    %br
+      = f.text_area :description
+  %p
+    = f.label :priority
+    %br
+      = f.text_field :priority
+  %p
+    = f.label :difficulty
+    %br
+      = f.text_field :difficulty
+  %p
+    = f.label :status
+    %br
+    = f.radio_button :status, 'Open'
+    Open
+    = f.radio_button :status, 'Close'
+    Close
+    = f.radio_button :status, 'Cancelled'
+    Cancelled
+  %p
+    = f.submit

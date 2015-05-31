@@ -28,7 +28,12 @@
   %p
     = f.label :status
     %br
-      = f.text_field :status
+    = f.radio_button :status, 'Open'
+    Open
+    = f.radio_button :status, 'Close'
+    Close
+    = f.radio_button :status, 'Cancelled'
+    Cancelled
   %p
     = f.submit
 = link_to 'Back', project_tasks_path
