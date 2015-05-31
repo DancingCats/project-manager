@@ -4,4 +4,30 @@
 %p
   %strong Text:
   = @project.description
+-#  link_to "Profile", controller: "profiles", action: "show", id: @profile
+= link_to 'Tasks', controller: 'tasks', action: 'index', project_id: @project
+%h2 Add a task:
+= form_for([@project, @project.tasks.build]) do |f|
+  %p
+    = f.label :title
+    %br
+      = f.text_field :title
+  %p
+    = f.label :description
+    %br
+      = f.text_area :description
+  %p
+    = f.label :priority
+    %br
+      = f.text_field :priority
+  %p
+    = f.label :difficulty
+    %br
+      = f.text_field :difficulty
+  %p
+    = f.label :status
+    %br
+      = f.text_field :status
+  %p
+    = f.submit
 = link_to 'Back', projects_path

@@ -25,6 +25,15 @@ gem 'bootstrap-sass', '~> 3.3.4.1'
 gem 'autoprefixer-rails'
 gem 'haml-rails', '~> 0.9'
 gem 'html2haml'
+gem 'cookies_eu', '~> 1.0.19'
+gem 'devise'
+gem 'twitter-bootswatch-rails', :github => 'scottvrosenthal/twitter-bootswatch-rails'
+# twitter bootstrap helpers gem, e.g., alerts etc...
+gem 'twitter-bootswatch-rails-helpers'
+gem 'therubyracer'
+
+# forms
+gem 'simple_form'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
@@ -43,4 +52,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
