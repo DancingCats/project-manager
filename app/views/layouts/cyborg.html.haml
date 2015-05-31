@@ -14,8 +14,27 @@
 
 
   %body
-
-    = yield
+    .container
+      .row
+        .col-lg-9
+          = bootswatch_flash
+          = yield
+        .col-lg-3
+          .well.sidebar-nav
+            %h3 Sidebar
+            %ul.nav.nav-list
+              %li.nav-header Sidebar
+              %li= link_to "Link1", "/path1"
+              %li= link_to "Link2", "/path2"
+              %li= link_to "Link3", "/path3"
+    / /.well
+    / /span
+    / /row
+    %footer.footer
+      .container
+        %p.text-muted Place sticky footer content here.
+    %div#cookies-annotation
+      = render 'cookies_eu/cookies_eu'
 
     /
       Javascripts
