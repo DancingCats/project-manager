@@ -1,19 +1,16 @@
-- if cannot? :read, @projects
-  = render 'layouts/not_signed'
-- if can? :manage, :all
-  %h1 Listing projects
-  = link_to 'New project', new_project_path
-  %table
+%h1 Listing projects
+= link_to 'New project', new_project_path
+%table
+  %tr
+    %th Title
+    %th Description
+    %th{:colspan => "5"}
+  - @projects.each do |project|
     %tr
-      %th Title
-      %th Description
-      %th{:colspan => "5"}
-    - @projects.each do |project|
-      %tr
-        %td= project.title
-        %td= project.description
-        %td= link_to 'Show', project_path(project)
-        %td= link_to 'Edit', edit_project_path(project)
-        %td= link_to 'Destroy', project_path(project), |
-          method: :delete,                          |
-          data: { confirm: 'Are you sure?' }
+      %td= project.title
+      %td= project.description
+      %td= link_to 'Show', project_path(project)
+      %td= link_to 'Edit', edit_project_path(project)
+      %td= link_to 'Destroy', project_path(project), |
+        method: :delete,                          |
+        data: { confirm: 'Are you sure?' }

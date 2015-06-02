@@ -1,26 +1,31 @@
 class ProjectsController < ApplicationController
 
+  load_and_authorize_resource
+  skip_authorize_resource :only => :index
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
 
   def new
     @project = Project.new
-    authorize! :manage, @project
   end
 
   def show
     @project = Project.find(params[:id])
-    authorize! :manage, @project
   end
 
   def index
-    @projects = Project.all
+    if can? :read, Project
+      @projects = Project.all
+    else
+      render layout: 'start'
+    end
+
   end
 
   def create
     @project = Project.new(project_params)
-    authorize! :manage, @project
 
     if @project.save
       redirect_to @project
@@ -32,12 +37,10 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
-    authorize! :manage, @project
   end
 
   def update
     @project = Project.find(params[:id])
-    authorize! :manage, @project
 
     if @project.update(project_params)
       redirect_to @project
@@ -48,7 +51,6 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-    authorize! :manage, @project
     @project.destroy
 
     redirect_to projects_path
